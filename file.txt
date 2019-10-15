@@ -1,0 +1,29 @@
+package day16;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class FileCopyTest {
+    public static void main(String[] args) throws Exception {
+        FileCopyTest fileCopyTest = new FileCopyTest();
+        fileCopyTest.copyFile("file.txt", "file.txt.bat");
+    }
+
+    /**
+     * 文件拷贝
+     * @param sourceFileName 原文件
+     * @param targetFileName 拷贝文件
+     * @throws Exception IO异常
+     */
+    public static void copyFile(String sourceFileName, String targetFileName) throws Exception{
+        FileReader fileReader = new FileReader(sourceFileName);
+        FileWriter fileWriter = new FileWriter(targetFileName);
+        int b = -1;
+        char[] chars = new char[1024];
+        while ((b = fileReader.read(chars)) != -1) {
+            fileWriter.write(chars, 0, b);
+        }
+        fileReader.close();
+        fileWriter.close();
+    }
+}

@@ -1,0 +1,1 @@
+availNum=0
